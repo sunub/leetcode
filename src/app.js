@@ -1,19 +1,23 @@
-function App(s, t) {
-    var map = {};
-    for (var i = 0; i < s.length; i++) {
-        console.log(s[i]);
-        if (s[i] in map) {
-            if (map[s[i]] !== t[i])
-                return false;
-        }
-        else {
-            if (Object.values(map).includes(t[i]) && s[i] !== map[t[i]])
-                return false;
-            map[s[i]] = t[i];
+function App(list1, list2) { }
+module.exports = App;
+var list1 = {
+    val: 1,
+    next: {
+        val: 2,
+        next: {
+            val: 4,
+            next: null
         }
     }
-    return true;
-}
-console.log(App("bbbaaaba", "aaabbbba"));
-module.exports = App;
-// "bbbaaaba", "aaabbbba"
+};
+var list2 = {
+    val: 1,
+    next: {
+        val: 3,
+        next: {
+            val: 4,
+            next: null
+        }
+    }
+};
+console.log(App(list1, list2));

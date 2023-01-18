@@ -8,7 +8,7 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "name": "nodemon",
-      "program": "${workspaceFolder}/app.js",
+      "program": "src/app.js",
       "request": "launch",
       "restart": true,
       "runtimeExecutable": "nodemon",
