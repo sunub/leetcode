@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "module": "CommonJS",
+        "isolatedModules": false,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "outDir": "dist"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}

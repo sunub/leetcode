@@ -1,40 +1,33 @@
-function minCostClimbingStairs(cost: number[]): number {
-    const mountain = [0, ...cost, 0]
-    let ptr1 = 0,
-        ptr2 = 1
-    const length = mountain.length - 1
+function canJump(nums: number[]): boolean {
+    let maxJump = nums[0]
 
-    let minCost = new Array(2).fill(0)
-
-    for (let i = 0; i < length; i++) {
-        let minJump1, minJump2
-        if (ptr2 + 1 < length && ptr2 + 2 < length) {
-            if (mountain[ptr2 + 1] > mountain[ptr2 + 2]) {
-                minJump1 = ptr2 + 2
-            } else if (mountain[ptr2 + 1] < mountain[ptr2 + 2]) {
-                minJump1 = ptr2 + 1
-            } else {
-                minJump1 = ptr2 + 2
-            }
-
-            minCost[1] += mountain[minJump2]
-            ptr2 = minJump2
-        }
-        if (ptr1 + 1 < length && ptr1 + 2 < length) {
-            if (mountain[ptr2 + 1] > mountain[ptr2 + 2]) {
-                minJump1 = ptr2 + 2
-            } else if (mountain[ptr2 + 1] < mountain[ptr2 + 2]) {
-                minJump1 = ptr2 + 1
-            } else {
-                minJump1 = ptr2 + 2
-            }
-
-            minCost[0] += mountain[minJump1]
-            ptr1 = minJump1
+    while (maxJump < nums.length - 1) {
+        if (nums[maxJump] === 0) {
+            break
+        } else {
+            maxJump += nums[maxJump]
         }
     }
 
-    return Math.min(...minCost)
-}
+    if (maxJump >= nums.length - 1) {
+        return true
+    } else if (maxJump < nums.length - 1) {
+        let inRangeMaxJump = 0
+        for (let i = 1; i < maxJump; i++) {
+            if (inRangeMaxJump < nums[i]) {
+                inRangeMaxJump = nums[i]
+            }
+        }
 
-console.log(minCostClimbingStairs([0, 1, 1, 1]))
+        while (inRangeMaxJump < nums.length - 1) {
+            if (nums[inRangeMaxJump] === 0) {
+                break
+            } else {
+                inRangeMaxJump += nums[inRangeMaxJump]
+            }
+        }
+
+        return inRangeMaxJump >= nums.length - 1 ? true : false
+    }
+}
+console.log(canJump([1, 1, 2, 2, 0, 1, 1]))
